@@ -1,14 +1,5 @@
 const std = @import("std");
 
-var slurp_buf: [8 * 1024 * 1024]u8 = undefined;
-pub fn slurp(filename: []const u8) ![]const u8 {
-    const file = try std.fs.cwd().openFile(filename, .{ .mode = .read_only });
-    defer file.close();
-
-    const len = try file.readAll(&slurp_buf);
-    return slurp_buf[0..len];
-}
-
 // Contains a set of `max` items. New items can be quickly added and compared against existing
 // items in the set.
 pub fn MaxSet(comptime T: type, comptime max: usize) type {
@@ -67,7 +58,7 @@ pub fn greatestSum(comptime max_n: usize, data: []const u8) !usize {
 }
 
 pub fn main() !void {
-    const data = try slurp("input/1.txt");
+    const data = @embedFile("input/1.txt");
 
     std.debug.print("Part 1: {}\n", .{try greatestSum(1, data)});
     std.debug.print("Part 2: {}\n", .{try greatestSum(3, data)});
