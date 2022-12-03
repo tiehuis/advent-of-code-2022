@@ -23,7 +23,7 @@ fn solve1(data: []const u8) usize {
         for (t[mid..]) |e| s2.set(symval(e));
 
         s1.setIntersection(s2);
-        sum += s1.findFirstSet() orelse unreachable;
+        sum += s1.findFirstSet().?;
     }
 
     return sum;
@@ -44,7 +44,7 @@ fn solve2(data: []const u8) usize {
             s.setIntersection(s1);
         }
 
-        sum += s.findFirstSet() orelse unreachable;
+        sum += s.findFirstSet().?;
     }
 
     return sum;
