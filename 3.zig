@@ -54,7 +54,7 @@ pub fn main() !void {
     const data = @embedFile("input/3.txt");
 
     std.debug.print("Part 1: {}\n", .{solve1(data)});
-    std.debug.print("Part 1: {}\n", .{solve2(data)});
+    std.debug.print("Part 2: {}\n", .{solve2(data)});
 }
 
 const testcase =
